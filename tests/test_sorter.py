@@ -6,10 +6,14 @@ class TestSorter(unittest.TestCase):
     def test_sort_asc(self):
         sorter = Sorter()
         self.assertEqual(sorter.sort([3, 1, 2]), [1, 2, 3])
+        #self.assertEqual(sorter.sort([3, 1, 2], method="merge_sort"), [1, 2, 3])
+        self.assertEqual(sorter.sort([3, 1, 2], method="selection_sort"), [1, 2, 3])
 
     def test_sort_desc(self):
         sorter = Sorter()
         self.assertEqual(sorter.sort([3, 1, 2], order="desc"), [3, 2, 1])
+        #self.assertEqual(sorter.sort([3, 1, 2], method="merge_sort", order="desc"), [3, 2, 1])
+        self.assertEqual(sorter.sort([3, 1, 2], method="selection_sort", order="desc"), [3, 2, 1])
 
     def test_sort_unknown_sort_method(self):
         sorter = Sorter()
