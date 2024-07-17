@@ -35,3 +35,9 @@ class Selection(SortingMethod):
             sequence[i], sequence[min_index] = sequence[min_index], sequence[i]
         
         return sequence if not reversed else sequence[::-1]
+
+
+class Insertion(SortingMethod):
+
+    def run(self, sequence: list, reversed: bool=False):
+        pass
