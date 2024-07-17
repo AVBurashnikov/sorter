@@ -40,4 +40,9 @@ class Selection(SortingMethod):
 class Insertion(SortingMethod):
 
     def run(self, sequence: list, reversed: bool=False):
-        pass
+        for i in range(1, len(sequence)):
+            for j in range(i, 0, -1):
+                if sequence[j] < sequence[j-1]:
+                    sequence[j], sequence[j-1] = sequence[j-1], sequence[j]
+        
+        return sequence if not reversed else sequence[::-1]
