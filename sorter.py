@@ -1,10 +1,15 @@
-from methods import SortingMethod, Bubble, Selection, Insertion
+from methods import SortingMethod, Bubble, Selection, Insertion, Heapsort
 
 class Sorter:
 
     def __init__(self, method="bubble"):
-        if not isinstance(method, str) or not method:
-            raise ValueError("The method name must be a string representing the name of the sort method")
+
+        if not isinstance(method, str):
+            raise TypeError("Sort method must be a string")
+        
+        if not method:
+            raise ValueError("Sort method must be a non-empty string")
+
         self.method = method
 
     def sort(self, sequence) -> list:
@@ -20,7 +25,8 @@ class Sorter:
             return {
                 "bubble": Bubble(),
                 "selection": Selection(),
-                "insertion": Insertion()
+                "insertion": Insertion(),
+                "heapsort": Heapsort(),
             }[self.method]
         except:
-            KeyError("Invalid method")
+            raise KeyError("Unknown method: '%s'" % self.method)

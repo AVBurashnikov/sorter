@@ -46,3 +46,26 @@ class Insertion(SortingMethod):
                     sequence[j], sequence[j-1] = sequence[j-1], sequence[j]
         
         return sequence if not reversed else sequence[::-1]
+
+
+class Heapsort(SortingMethod):
+
+    def run(self, sequence: List, reversed: bool = False):
+        heap_size = len(sequence)
+
+        for i in range(heap_size):
+            self.__build_heap(sequence, heap_size - i)
+            sequence[-i], sequence[0] = sequence[0], sequence[-i]
+
+        return sequence if not reversed else sequence[::-1]
+
+    def __build_heap(self, s: List, heap_size: int):
+        i = heap_size//2 - 1
+        while i >= 0:
+            if s[i] < s[2*i + 1]:
+                s[i], s[2*i + 1] = s[2*i + 1], s[i]
+            if i*2 + 2 < heap_size and s[i] < s[2*i + 2]:
+                s[i], s[2*i + 2] = s[2*i + 2], s[i]
+            i -= 1
+
+
