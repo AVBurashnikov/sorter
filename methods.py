@@ -68,4 +68,29 @@ class Heapsort(SortingMethod):
                 s[i], s[2*i + 2] = s[2*i + 2], s[i]
             i -= 1
 
+class Quicksort(SortingMethod):
+
+    def run(self, sequence: List, reversed: bool = False):
+        
+        def __recursively_sort(sequence):
+
+            if len(sequence) <= 1:
+                return sequence
+
+            equal_base, less_than_base, greater_than_base = [], [], []
+
+            for e in sequence:
+                if sequence[0] == e:
+                    equal_base.append(e)
+                elif sequence[0] < e:
+                    greater_than_base.append(e)
+                else:
+                    less_than_base.append(e)
+
+            return __recursively_sort(less_than_base) + equal_base + __recursively_sort(greater_than_base)
+        
+        result = __recursively_sort(sequence)
+        return  result if not reversed else result[::-1]
+
+
 

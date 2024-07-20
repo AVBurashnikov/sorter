@@ -1,4 +1,4 @@
-from methods import SortingMethod, Bubble, Selection, Insertion, Heapsort
+from methods import SortingMethod, Bubble, Selection, Insertion, Heapsort, Quicksort
 
 class Sorter:
 
@@ -27,6 +27,7 @@ class Sorter:
                 "selection": Selection(),
                 "insertion": Insertion(),
                 "heapsort": Heapsort(),
+                "quicksort": Quicksort(),
             }[self.method]
         except:
             raise KeyError("Unknown method: '%s'" % self.method)
